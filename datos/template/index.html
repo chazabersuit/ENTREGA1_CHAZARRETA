@@ -1,20 +1,22 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="es">
+{% extends 'base.html' %} {% load static%} {% block centro_web%}
+<h1>Listado de interpretes en base de datos</h1>
+<ul>
+    <table>
+        <tr>
+            <th scope="col" class="table_index"><strong>Interprete</strong></th>
+            <th scope="col" class="table_index"><strong>Album</strong></th>
+            <th scope="col" class="table_index"><strong>año</strong></th>
+        </tr>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenido</title>
-    <link rel="stylesheet" href={% static 'index.css' %}>
-</head>
+        {% for objeto in lista_artistas %}
+        <tr>
+            <td class="table_index">{{objeto.interprete}}</td>
+            <td class="table_index">{{objeto.album}}</td>
+            <td class="table_index">{{objeto.año}}</td>
+        </tr>
+        {% endfor %}
+    </table>
 
-<body>
-    <div class="index_div">
-        <h1 class="index">PROYECTO ENTREGABLE 1</h1>
-    </div>
 
-</body>
-
-</html>
+</ul>
+{% endblock %}

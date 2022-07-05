@@ -1,22 +1,68 @@
 {% extends 'base.html' %} {% load static%} {% block centro_web%}
+<div class="caja">
+    <div class="caja_ingreso">
+        <h2>Ingreso de datos</h2>
+        <form action={% url 'index' %} method="post">
+            {% csrf_token %}
+            <table>
+                {{formulario_ingreso}}
+            </table>
+            <p></p>
+            <button>GUARDAR</button>
+        </form>
+    </div>
+    <div class="caja_busqueda">
+        <h2>Busqueda</h2>
+        <form action={% url 'index' %}>
+            {{formulario_busqueda}}
+            <p></p>
+            <button>Buscar</button>
+        </form>
+        <hr> {% if formulario_busqueda %}
+        <ul>
+            <table>
+                <tr>
+                    <th scope="col" class="table_index"><strong>Interprete</strong></th>
+                    <th scope="col" class="table_index"><strong>Album</strong></th>
+                    <th scope="col" class="table_index"><strong>Año</strong></th>
+                    <th scope="col" class="table_index"><strong>Link</strong></th>
+                </tr>
+                {% for objeto in listado_busqueda %}
+                <tr>
+                    <td class="table_index">{{objeto.interprete}}</td>
+                    <td class="table_index">{{objeto.album}}</td>
+                    <td class="table_index">{{objeto.año}}</td>
+                    <td class="table_index">
+                        <a href={{objeto.link}} target="_blank">{{objeto.link}}</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </ul>
+        {% else %}
+        <p>No hay datos</p>
+        {% endif %}
+    </div>
+</div>
+
+<hr>
 <h1>Listado de interpretes en base de datos</h1>
 <ul>
     <table>
         <tr>
             <th scope="col" class="table_index"><strong>Interprete</strong></th>
             <th scope="col" class="table_index"><strong>Album</strong></th>
-            <th scope="col" class="table_index"><strong>año</strong></th>
+            <th scope="col" class="table_index"><strong>Año</strong></th>
+            <th scope="col" class="table_index"><strong>Link</strong></th>
         </tr>
-
-        {% for objeto in lista_artistas %}
+        {% for objeto in listado %}
         <tr>
             <td class="table_index">{{objeto.interprete}}</td>
             <td class="table_index">{{objeto.album}}</td>
             <td class="table_index">{{objeto.año}}</td>
+            <td class="table_index"><a href={{objeto.link}} target="_blank">{{objeto.link}}</a></td>
         </tr>
         {% endfor %}
     </table>
-
-
 </ul>
+
 {% endblock %}

@@ -23,9 +23,23 @@
 
 .main {
     margin: 10px 10px;
-    border: 1px black solid;
 }
 
 .table_index {
     border: 1px solid black;
+}
+
+.caja {
+    display: flex;
+    background-color: rgb(213, 209, 208);
+    padding: 10px 5px;
+}
+
+.caja div {
+    flex: 1;
+}
+
+.caja div h2 {
+    color: red;
+    text-align: center;
 }

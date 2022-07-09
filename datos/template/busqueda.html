@@ -20,6 +20,7 @@
                 <th scope="col" class="table_index"><strong>Album</strong></th>
                 <th scope="col" class="table_index"><strong>Año</strong></th>
                 <th scope="col" class="table_index"><strong>Link</strong></th>
+                <th scope="col" class="table_index"><strong>Accion</strong></th>
             </tr>
             {% for objeto in listado_busqueda %}
             <tr>
@@ -28,6 +29,10 @@
                 <td class="table_index">{{objeto.año}}</td>
                 <td class="table_index">
                     <a href={{objeto.link}} target="_blank">{{objeto.link}}</a></td>
+                <td>
+                    <a href={% url 'editar' objeto.id %}>Editar</a>
+                    <a href={% url 'eliminar' objeto.id %}>Eliminar</a>
+                </td>
             </tr>
             {% endfor %}
         </table>

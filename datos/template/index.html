@@ -1,21 +1,4 @@
 {% extends 'base.html' %} {% load static%} {% block centro_web%}
 
-
-<h2 class="h2_centro">Ingreso de datos</h2>
-
-<div class="div_ingreso_padre">
-    <div class="div_ingreso">
-        <form action={% url 'index' %} method="POST">
-            {% csrf_token %}
-            <table>
-                {{formulario_ingreso}}
-            </table>
-            <hr>
-            <button>GUARDAR</button>
-        </form>
-    </div>
-</div>
-
-<div class="boton_link">
-    <a href={% url 'busqueda' %}>LISTADO DE DATOS</a>
-</div> {% endblock %}
+<h1>Pagina Index</h1>
+{% endblock %}

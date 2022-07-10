@@ -4,45 +4,43 @@
     <div class="div_ingreso">
         <form action={% url 'busqueda' %}>
             {{formulario_busqueda}}
-            <p></p>
-            <button>Buscar</button>
+            <button class="btn btn-dark">Buscar</button>
         </form>
     </div>
 </div>
 
-
 <div class="div_tabla">
     {% if listado_busqueda %}
     <ul>
-        <table>
+        <table class="table">
             <tr>
-                <th scope="col" class="table_index"><strong>Interprete</strong></th>
-                <th scope="col" class="table_index"><strong>Album</strong></th>
-                <th scope="col" class="table_index"><strong>Año</strong></th>
-                <th scope="col" class="table_index"><strong>Link</strong></th>
-                <th scope="col" class="table_index"><strong>Accion</strong></th>
+                <th scope="col"><strong>Interprete</strong></th>
+                <th scope="col"><strong>Album</strong></th>
+                <th scope="col"><strong>Año</strong></th>
+                <th scope="col"><strong>Link</strong></th>
+                <th scope="col"><strong>Accion</strong></th>
             </tr>
             {% for objeto in listado_busqueda %}
             <tr>
-                <td class="table_index">{{objeto.interprete}}</td>
-                <td class="table_index">{{objeto.album}}</td>
-                <td class="table_index">{{objeto.año}}</td>
-                <td class="table_index">
+                <td>{{objeto.interprete}}</td>
+                <td>{{objeto.album}}</td>
+                <td>{{objeto.año}}</td>
+                <td>
                     <a href={{objeto.link}} target="_blank">{{objeto.link}}</a></td>
                 <td>
-                    <a href={% url 'editar' objeto.id %}>Editar</a>
-                    <a href={% url 'eliminar' objeto.id %}>Eliminar</a>
+                    <a href={% url 'editar' objeto.id %} class="btn btn-primary">Editar</a>
+                    <a href={% url 'eliminar' objeto.id %} class="btn btn-danger">Eliminar</a>
                 </td>
             </tr>
             {% endfor %}
         </table>
     </ul>
     {% else %}
-    <p>No hay datos</p>
-    {% endif %}
+    <p>No hay datos :(</p>
+    <a href={% url 'busqueda' %} class="btn btn-secondary">MOSTRAR LISTADO</a> {% endif %}
 </div>
 
 
 <div class="boton_link">
-    <a href={% url 'index' %}>IR A CARGA DE DATOS</a>
+    <a href={% url 'cargar' %} class="btn btn-dark">IR A CARGA DE DATOS</a>
 </div> {% endblock %}
